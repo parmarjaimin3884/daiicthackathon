@@ -15,10 +15,7 @@ import InterviewPrep from './components/InterviewPrep';
 import Mentors from './components/Mentors';
 import Webinars from './components/Webinars';
 import Settings from './components/Settings';
-<<<<<<< HEAD
-=======
 import RoadmapGenerator from './components/RoadmapGenerator';
->>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -69,10 +66,7 @@ function App() {
             <Route path="meeting" element={<MeetingPage />} />
             <Route path="resume" element={<ResumeBuilder />} />
             <Route path="interview" element={<InterviewPrep />} />
-<<<<<<< HEAD
-=======
             <Route path="roadmap" element={<RoadmapGenerator />} />
->>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
             <Route path="settings" element={<Settings />} />
 
             {/* Student-specific routes */}

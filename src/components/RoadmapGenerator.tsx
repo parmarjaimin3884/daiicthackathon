@@ -178,7 +178,7 @@ const RoadmapGenerator: React.FC = () => {
     new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
   );
 
-  // Add new state for notifications
+  // Add state for notifications
   const [notification, setNotification] = useState<{
     open: boolean;
     message: string;
@@ -218,17 +218,17 @@ const RoadmapGenerator: React.FC = () => {
             return item;
           });
           const completedCount = updatedChecklist.filter(item => item.completed).length;
-          const progress = Math.round((completedCount / updatedChecklist.length) * 100);
+          const newProgress = Math.round((completedCount / updatedChecklist.length) * 100);
           
           showNotification(
-            `Task marked as ${updatedChecklist.find(i => i.id === itemId)?.completed ? 'completed' : 'incomplete'}!`,
+            `Task marked as ${!roadmap.checklist.find(i => i.id === itemId)?.completed ? 'completed' : 'incomplete'}!`,
             'info'
           );
-
+          
           return {
             ...roadmap,
             checklist: updatedChecklist,
-            progress
+            progress: newProgress
           };
         }
         return roadmap;
@@ -1209,6 +1209,7 @@ const RoadmapGenerator: React.FC = () => {
 
       {activeTab === 0 ? renderNewRoadmap() : renderRoadmapProgress()}
 
+      {/* Add Snackbar at the end of the component */}
       <Snackbar
         open={notification.open}
         autoHideDuration={3000}
