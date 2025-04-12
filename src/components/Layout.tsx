@@ -9,7 +9,12 @@ import {
   Settings,
   Bell,
   LogOut,
+<<<<<<< HEAD
   Plus
+=======
+  Plus,
+  Map
+>>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { useUser } from '../context/UserContext';
@@ -40,6 +45,15 @@ const Layout: React.FC<LayoutProps> = ({ userRole }) => {
         description: role === 'mentor' ? '+ Upcoming Webinar Management' : undefined
       },
       { 
+<<<<<<< HEAD
+=======
+        icon: Map, 
+        label: 'Roadmap Generator', 
+        path: '/dashboard/roadmap',
+        description: 'Create your career roadmap'
+      },
+      { 
+>>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
         icon: FileText, 
         label: 'Resume Builder', 
         path: '/dashboard/resume' 

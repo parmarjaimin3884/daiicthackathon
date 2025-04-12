@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Plus, Download, Trash2 } from 'lucide-react';
 
 interface Entry {
@@ -13,6 +14,12 @@ export default function ResumeBuilder() {
   const [skillsEntries, setSkillsEntries] = useState<Entry[]>([{ id: 1 }]);
   const [projectsEntries, setProjectsEntries] = useState<Entry[]>([{ id: 1 }]);
   const [achievementsEntries, setAchievementsEntries] = useState<Entry[]>([{ id: 1 }]);
+=======
+import { Plus, Download } from 'lucide-react';
+
+export default function ResumeBuilder() {
+  const [activeSection, setActiveSection] = useState('personal');
+>>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
 
   const sections = [
     { id: 'personal', title: 'Personal Information' },
@@ -23,6 +30,7 @@ export default function ResumeBuilder() {
     { id: 'achievements', title: 'Achievements' },
   ];
 
+<<<<<<< HEAD
   const handleAddEntry = (section: string) => {
     switch (section) {
       case 'education':
@@ -92,6 +100,8 @@ export default function ResumeBuilder() {
     }
   };
 
+=======
+>>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
@@ -109,6 +119,7 @@ export default function ResumeBuilder() {
             <div
               key={section.id}
               className="bg-white rounded-lg shadow p-6"
+<<<<<<< HEAD
               onClick={() => setActiveSection(section.id)}
             >
               <div className="flex justify-between items-center mb-4">
@@ -346,6 +357,40 @@ export default function ResumeBuilder() {
                   </div>
                 ))}
               </div>
+=======
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-gray-800">{section.title}</h3>
+                <button className="flex items-center text-indigo-600 hover:text-indigo-700">
+                  <Plus className="h-4 w-4 mr-1" />
+                  Add
+                </button>
+              </div>
+              
+              {section.id === activeSection && (
+                <div className="space-y-4">
+                  {section.id === 'personal' && (
+                    <>
+                      <input
+                        type="text"
+                        placeholder="Full Name"
+                        className="w-full p-2 border rounded-md"
+                      />
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        className="w-full p-2 border rounded-md"
+                      />
+                      <textarea
+                        placeholder="Professional Summary"
+                        className="w-full p-2 border rounded-md"
+                        rows={4}
+                      />
+                    </>
+                  )}
+                </div>
+              )}
+>>>>>>> d9f56724a9ec3a562801afc980f51b3566d24487
             </div>
           ))}
         </div>
