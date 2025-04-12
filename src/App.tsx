@@ -15,6 +15,7 @@ import InterviewPrep from './components/InterviewPrep';
 import Mentors from './components/Mentors';
 import Webinars from './components/Webinars';
 import Settings from './components/Settings';
+import RoadmapGenerator from './components/RoadmapGenerator';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -65,6 +66,7 @@ function App() {
             <Route path="meeting" element={<MeetingPage />} />
             <Route path="resume" element={<ResumeBuilder />} />
             <Route path="interview" element={<InterviewPrep />} />
+            <Route path="roadmap" element={<RoadmapGenerator />} />
             <Route path="settings" element={<Settings />} />
 
             {/* Student-specific routes */}

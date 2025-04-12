@@ -9,7 +9,8 @@ import {
   Settings,
   Bell,
   LogOut,
-  Plus
+  Plus,
+  Map
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { useUser } from '../context/UserContext';
@@ -38,6 +39,12 @@ const Layout: React.FC<LayoutProps> = ({ userRole }) => {
         label: `Hello, ${firstName}`, 
         path: '/dashboard',
         description: role === 'mentor' ? '+ Upcoming Webinar Management' : undefined
+      },
+      { 
+        icon: Map, 
+        label: 'Roadmap Generator', 
+        path: '/dashboard/roadmap',
+        description: 'Create your career roadmap'
       },
       { 
         icon: FileText, 
