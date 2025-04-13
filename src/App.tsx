@@ -22,6 +22,8 @@ import RoadmapGenerator from './components/RoadmapGenerator';
 import Networking from './components/Networking';
 import CommunityGroup from './components/CommunityGroup';
 import EventRegistration from './components/EventRegistration';
+import Login from './components/Login';
+import Register from './components/Register';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -47,6 +49,11 @@ const RoleBasedRoute = ({
   return <>{children}</>;
 };
 
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
+  const user = authService.getCurrentUser();
+  return user ? <>{children}</> : <Navigate to="/login" />;
+};
+
 function App() {
   return (
     <UserProvider>
@@ -56,8 +63,8 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
 
@@ -65,9 +72,9 @@ function App() {
             <Route
               path="/dashboard"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Layout userRole={authService.getRole() || 'student'} />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
             >
               <Route index element={<Dashboard />} />
