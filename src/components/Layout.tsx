@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { useUser } from '../context/UserContext';
+import { FaHome, FaUserFriends, FaCalendarAlt, FaFileAlt, FaComments, FaCog, FaChartLine, FaNetworkWired } from 'react-icons/fa';
 
 interface LayoutProps {
   userRole: 'student' | 'mentor';
@@ -29,8 +30,9 @@ interface NavigationItem {
 
 const Layout: React.FC<LayoutProps> = ({ userRole }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user } = useUser();
-  const firstName = user?.firstName || 'Student';
+  const [firstName, setFirstName] = useState('');
 
   const getNavigationItems = (role: 'student' | 'mentor'): NavigationItem[] => {
     const baseNavigation: NavigationItem[] = [
@@ -67,6 +69,12 @@ const Layout: React.FC<LayoutProps> = ({ userRole }) => {
         label: 'Webinars', 
         path: '/dashboard/webinars',
         description: role === 'mentor' ? '+ Create/Edit webinar events' : 'Register'
+      },
+      { 
+        icon: FaNetworkWired, 
+        label: 'Networking', 
+        path: '/dashboard/networking',
+        description: 'Connect with professionals and communities'
       },
       { 
         icon: Settings, 
